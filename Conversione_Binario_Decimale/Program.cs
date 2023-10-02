@@ -20,14 +20,14 @@ namespace Conversione_Binario_Decimale
         {
             return;
         }*/
-        static int ConvertDpToInt() 
+        /*static int ConvertDpToInt() 
         {
             return 0;
         }
         static int ConvertBiInt() 
         {
             return 0; 
-        }
+        }*/
         /*static int[] ConvertBiDe()
         {
             
