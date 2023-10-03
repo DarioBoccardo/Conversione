@@ -72,14 +72,15 @@ namespace Conversione_Binario_Decimale
             for(int i = 0; i < Binario.Length; i++)
             {
                 valInt = valInt + Binario[i] * Math.Pow(2, j);
+                j--;
             }
             return (int)valInt; 
         }
         static int[] ConvertBiDp(bool[] bn)
         {
             int[] dp = new int[4];
-            double valInt = 0;
-            int j = 0;
+            double[] valInt = new double[4];
+            int j = 31;
             int[] binario = new int[32];
             for (int i = 0; i < bn.Length; i++)
             {
@@ -92,9 +93,19 @@ namespace Conversione_Binario_Decimale
                     binario[i] = 0;
                 }
             }
-            for (int i = 0; i < binario.Length; i++)
+            j = 4;
+            for(int y = 0; y < 4; y++)
             {
-                valInt = valInt + binario[i] * Math.Pow(2, j);
+                for (int i = 0; i < binario.Length/4; i++)
+                {
+                    valInt[y] = valInt[y] + binario[i] * Math.Pow(2, j);
+                    j--;
+                }
+            }
+            for(int i = 0; i < dp.Length; i++)
+            {
+                dp[i] = (int)(valInt[i] * Math.Pow(2, j));
+                j--;
             }
             return dp;
         }
