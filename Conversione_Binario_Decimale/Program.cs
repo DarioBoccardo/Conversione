@@ -54,12 +54,49 @@ namespace Conversione_Binario_Decimale
         }
         static int ConvertBiInt(bool[] bn) 
         {
+            int[] Binario = new int[32];
+            double valInt = 0;
+            int j = 31;
+            for(int i = 0; i < bn.Length; i++)
+            {
+                if (bn[i] == true)
+                {
+                    Binario[i] = 1;
+                }
+                else
+                {
+                    Binario[i] = 0;
+                }
+            }
 
-            return 0; 
+            for(int i = 0; i < Binario.Length; i++)
+            {
+                valInt = valInt + Binario[i] * Math.Pow(2, j);
+            }
+            return (int)valInt; 
         }
-        /*static int[] ConvertBiDp()
+        static int[] ConvertBiDp(bool[] bn)
         {
-            
-        }*/
+            int[] dp = new int[4];
+            double valInt = 0;
+            int j = 0;
+            int[] binario = new int[32];
+            for (int i = 0; i < bn.Length; i++)
+            {
+                if (bn[i] == true)
+                {
+                    binario[i] = 1;
+                }
+                else
+                {
+                    binario[i] = 0;
+                }
+            }
+            for (int i = 0; i < binario.Length; i++)
+            {
+                valInt = valInt + binario[i] * Math.Pow(2, j);
+            }
+            return dp;
+        }
     }
 }
