@@ -17,18 +17,13 @@ namespace Conversione_Binario_Decimale
             for(int i = 0; i < dp.Length; i++)
             {
                 dp[i] = Convert.ToInt32(Console.ReadLine());
-            }
-            ConvertDpToInt(); // Converte la stringa inserita dall'utente in int
+            }     
             bool[] bn = ConvertDpBi(dp); // Converte l'intero in decimale puntato ad booleano in binario
+            ConvertDpToInt(dp); // Converte la stringa inserita dall'utente in int
             ConvertBiInt(bn); // Converte l'array di bool in un array int
-            ConvertBiDp(); // Converte il binario booleano in un decimale
+            //ConvertBiDp(); // Converte il binario booleano in un decimale
 
             Console.ReadLine();
-        }
-        static int ConvertDpToInt()
-        {
-
-            return 0;
         }
         static bool[] ConvertDpBi(int[] dp)
         {
@@ -45,6 +40,17 @@ namespace Conversione_Binario_Decimale
                 } while (dp[i] < 2);
             }
             return bn;
+        }
+        static int ConvertDpToInt(int[] dp) // Metodo per ottenere il valore della somma dei decimali puntati in decimale
+        {
+            double valInt = 0;
+            int j = 3;
+            for(int i = 0; i < dp.Length; i++)
+            {
+                valInt = valInt + dp[i]* Math.Pow(256, j);
+                j--;
+            }
+            return (int)valInt;
         }
         static int ConvertBiInt(bool[] bn) 
         {
