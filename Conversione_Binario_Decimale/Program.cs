@@ -11,10 +11,13 @@ namespace Conversione_Binario_Decimale
         static void Main(string[] args)
         {
             int[] indirizzoIp = new int[4];
-        }
-        static bool Sequenza()
-        {
-            return true;
+            bool[] bn = new bool[32];
+
+            Console.WriteLine("Inserisci l'indirizzo IP in decimale puntato");
+            for(int i = 0; i < indirizzoIp.Length; i++)
+            {
+                indirizzoIp[i] = Convert.ToInt32(Console.ReadLine());
+            }
         }
         /*static bool[] ConvertDeBi()
         {
