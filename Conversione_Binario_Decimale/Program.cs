@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Conversione_Binario_Decimale
 {
-    internal class Program
+    internal class Program // Dario Boccardo 4°E
     {
-        static void Main(string[] args)
+        static void Main(string[] args) 
         {
             int[] dp = new int[4];
 
@@ -21,7 +21,7 @@ namespace Conversione_Binario_Decimale
             bool[] bn = ConvertDpBi(dp); // Converte l'intero in decimale puntato ad booleano in binario
             ConvertDpToInt(dp); // Converte la stringa inserita dall'utente in int
             ConvertBiInt(bn); // Converte l'array di bool in un array int
-            //ConvertBiDp(); // Converte il binario booleano in un decimale
+            ConvertBiDp(bn); // Converte il binario booleano in un decimale
 
             Console.ReadLine();
         }
