@@ -11,46 +11,65 @@ namespace Conversione_Binario_Decimale
     {
         static void Main(string[] args) 
         {
-            int[] dp = new int[4];
+            int[] dp = new int[4] {10, 10, 10, 1};
 
-            Console.WriteLine("Inserisci l'indirizzo IP in decimale puntato");
+            /*Console.WriteLine("Inserisci i 4 otteti dell'indirizzo IP in decimale puntato");
             for(int i = 0; i < dp.Length; i++)
             {
                 dp[i] = Convert.ToInt32(Console.ReadLine());
-            }     
-            bool[] bn = ConvertDpBi(dp); // Converte l'intero in decimale puntato ad booleano in binario
-            ConvertDpToInt(dp); // Converte la stringa inserita dall'utente in int
-            ConvertBiInt(bn); // Converte l'array di bool in un array int
-            ConvertBiDp(bn); // Converte il binario booleano in un decimale
+            }   */
+
+            Console.WriteLine(ConvertDpToInt(dp)); // Converte la stringa inserita dall'utente in int 2°
+
+            bool[] bn = ConvertDpBi(dp); // Converte l'intero in decimale puntato ad booleano in binario 1°
+
+            Console.WriteLine(ConvertBiInt(bn)); // Converte l'array di bool in un array int 3°
+            
+            ConvertBiDp(bn); // Converte il binario booleano in un decimale 4°
 
             Console.ReadLine();
         }
+        static int ConvertDpToInt(int[] dp) // Metodo per ottenere il valore della somma dei decimali puntati in decimale
+        {
+            double valInt = 0;
+            int j = 3;
+            for (int i = 0; i < dp.Length; i++)
+            {
+                valInt = valInt + dp[i] * Math.Pow(256, j);
+                j--;
+            }
+            return (int)valInt;
+        }
         static bool[] ConvertDpBi(int[] dp)
         {
-            int resto = 0, cont = 31;
+            int resto;
             bool[] bn = new bool[32];
+            string binarioStri = "";
             for(int i = 0; i < dp.Length; i++)
             {
                 do
                 {
                     resto = dp[i] % 2;
                     dp[i] = dp[i] / 2;
-                    bn[cont] = resto == 0;
-                    cont--;
-                } while (dp[i] < 2);
+                    binarioStri += resto;
+                } while (dp[i] >= 2);
+                if(binarioStri.Length * i == 8 * i)
+                {
+
+                }
+                else
+                {
+                    for(int j = 0; j < i * 8; j++)
+                    {
+                        binarioStri += '0';
+                    }
+                }
+            }
+            for (int i = 0; i < bn.Length; i++)
+            {
+                bn[i] = binarioStri[i] == '1';
             }
             return bn;
-        }
-        static int ConvertDpToInt(int[] dp) // Metodo per ottenere il valore della somma dei decimali puntati in decimale
-        {
-            double valInt = 0;
-            int j = 3;
-            for(int i = 0; i < dp.Length; i++)
-            {
-                valInt = valInt + dp[i]* Math.Pow(256, j);
-                j--;
-            }
-            return (int)valInt;
         }
         static int ConvertBiInt(bool[] bn) 
         {
